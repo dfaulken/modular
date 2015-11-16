@@ -35,6 +35,7 @@ module Modular
 
     def prime_legendre n, modulus
       case (n ** ((modulus - 1) / 2)) % modulus
+      when 0           then 0
       when 1           then 1
       when modulus - 1 then -1
       end
