@@ -45,5 +45,12 @@ module Modular
       end
     end
 
+    def evaluate_fraction *args
+      if args.size == 1
+        Rational(args.shift)
+      else Rational(args.shift) + Rational(1, evaluate_fraction(*args))
+      end
+    end
+
   end
 end
