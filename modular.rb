@@ -28,6 +28,10 @@ module Modular
       factor(n).map{|p, e| (p - 1) * (p ** (e - 1))}.inject(:*) || 0
     end
 
+    def quadratic_residues modulus
+      (1..(modulus - 1)).map{|n| n ** 2 % modulus}.uniq.sort
+    end
+
     def legendre n, modulus
       raise ArgumentError, 'Composite modulus' unless modulus.prime?
       factor(n).map{|p, _| prime_legendre p, modulus}.inject :*
