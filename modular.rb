@@ -109,5 +109,18 @@ module Modular
       else [whole, to_continued_fraction(Rational(1, remainder))].flatten
       end
     end
+
+    # Given two integer values, prints the Euclidean algorithm.
+    def euclidean_algorithm x, y
+      smaller, larger = [x, y].sort
+      quotient = larger / smaller
+      remainder = larger % smaller
+      puts "#{remainder} = #{larger} - #{quotient} * #{smaller}"
+      case remainder
+      when 0 then puts 'No solutions'
+      when 1 then return
+      else euclidean_algorithm smaller, remainder
+      end
+    end
   end
 end

@@ -12,15 +12,15 @@ describe Modular do
 
   describe 'primitive_root?' do
     it 'passes in the generic case' do
-      # 2^1  = 2 (mod 11)
-      # 2^2  = 4 (mod 11)
-      # 2^3  = 8 (mod 11)
+      # 2^1  = 2      (mod 11)
+      # 2^2  = 4      (mod 11)
+      # 2^3  = 8      (mod 11)
       # 2^4  = 16 = 5 (mod 11)
-      # 2^5  = 10 (mod 11)
+      # 2^5  = 10     (mod 11)
       # 2^6  = 20 = 9 (mod 11)
       # 2^7  = 18 = 7 (mod 11)
       # 2^8  = 14 = 3 (mod 11)
-      # 2^9  = 6 (mod 11)
+      # 2^9  = 6      (mod 11)
       # 2^10 = 12 = 1 (mod 11)
       expect(Modular.primitive_root? 2, 11).to be true
     end
