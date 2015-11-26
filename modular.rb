@@ -25,6 +25,7 @@ module Modular
     #   Modular.primitive_roots 11
     #   => [2, 6, 7, 8]
     def primitive_roots modulus
+      raise ArgumentError, 'Composite modulus' unless modulus.prime?
       (2..(modulus - 1)).select{|n| primitive_root? n, modulus}
     end
 
@@ -66,7 +67,7 @@ module Modular
     # Example:
     #   Modular.legendre 4, 13
     #   => 1
-    # (as from above, 4 is a quadratic residue modulo 13)
+    # (from above)
     def legendre n, modulus
       raise ArgumentError, 'Composite modulus' unless modulus.prime?
       factor(n).map{|p, e| prime_legendre p ** e, modulus}.inject :*
