@@ -45,12 +45,19 @@ module Modular
       end
     end
 
-    def evaluate_fraction *args
-      if args.size == 1
-        Rational(args.shift)
-      else Rational(args.shift) + Rational(1, evaluate_fraction(*args))
+    def evaluate_continued_fraction values
+      if values.size == 1 
+        Rational(values.shift)
+      else Rational(values.shift) + Rational(1, evaluate_fraction(values))
       end
     end
 
+    def to_continued_fraction rational
+      whole = rational.floor
+      remainder = rational - whole
+      if remainder.zero? then whole
+      else [whole, to_continued_fraction(Rational(1, remainder))].flatten
+      end
+    end
   end
 end
