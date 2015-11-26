@@ -63,7 +63,7 @@ module Modular
     # (as from above, 4 is a quadratic residue modulo 13)
     def legendre n, modulus
       raise ArgumentError, 'Composite modulus' unless modulus.prime?
-      factor(n).map{|p, _| prime_legendre p, modulus}.inject :*
+      factor(n).map{|p, e| prime_legendre p ** e, modulus}.inject :*
     end
 
     # Helper function
