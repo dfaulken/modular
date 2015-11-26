@@ -13,11 +13,17 @@ module Modular
     end
 
     # Returns whether n is a primitive root in the given modulus.
+    # Example:
+    #   Modular.primitive_root? 2, 11
+    #   => true
     def primitive_root? n, modulus
       ord(n, modulus) == modulus - 1
     end
 
     # Returns all primitive roots in the given modulus.
+    # Example:
+    #   Modular.primitive_roots 11
+    #   => [2, 6, 7, 8]
     def primitive_roots modulus
       (2..(modulus - 1)).select{|n| primitive_root? n, modulus}
     end
@@ -84,7 +90,8 @@ module Modular
     def evaluate_continued_fraction values
       if values.size == 1 
         Rational(values.shift)
-      else Rational(values.shift) + Rational(1, evaluate_fraction(values))
+      else Rational(values.shift) +
+           Rational(1, evaluate_continued_fraction(values))
       end
     end
 
