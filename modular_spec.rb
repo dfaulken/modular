@@ -35,6 +35,10 @@ describe Modular do
       # 2^9 = 6
       expect(Modular.primitive_roots 11).to eql [2, 6, 7, 8]
     end
+    it 'raises ArgumentError for composite modulus' do
+      expect { Modular.primitive_roots 10 }
+        .to raise_exception ArgumentError, 'Composite modulus'
+    end
   end
 
   describe 'factor' do
@@ -69,6 +73,10 @@ describe Modular do
   describe 'legendre' do
     it 'passes in the generic case' do
       expect(Modular.legendre 4, 13).to eql 1
+    end
+    it 'raises ArgumentError for composite modulus' do
+      expect { Modular.legendre 1, 10 }
+        .to raise_exception ArgumentError, 'Composite modulus'
     end
   end
 
