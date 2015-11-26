@@ -105,7 +105,7 @@ module Modular
     def to_continued_fraction rational
       whole = rational.floor
       remainder = rational - whole
-      if remainder.zero? then whole
+      if remainder.zero? then [whole]
       else [whole, to_continued_fraction(Rational(1, remainder))].flatten
       end
     end
