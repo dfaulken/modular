@@ -1,5 +1,8 @@
 load 'modular.rb'
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 describe Modular do
   describe 'ord' do
     it 'passes in the generic case' do
