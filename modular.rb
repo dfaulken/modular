@@ -70,13 +70,13 @@ module Modular
     # (from above)
     def legendre n, modulus
       raise ArgumentError, 'Composite modulus' unless modulus.prime?
+      return 0 if n.zero?
       factor(n).map{|p, e| prime_legendre p ** e, modulus}.inject :*
     end
 
     # Helper function
-    def prime_legendre n, modulus
+    private def prime_legendre n, modulus
       case (n ** ((modulus - 1) / 2)) % modulus
-      when 0           then 0
       when 1           then 1
       when modulus - 1 then -1
       end

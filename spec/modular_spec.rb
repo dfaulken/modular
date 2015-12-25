@@ -1,5 +1,4 @@
 require 'spec_helper'
-require File.join(File.dirname(__FILE__), '..', 'modular')
 
 describe Modular do
   describe 'ord' do
@@ -72,8 +71,14 @@ describe Modular do
   end
 
   describe 'legendre' do
-    it 'passes in the generic case' do
+    it 'evaluates quadratic residues' do
       expect(Modular.legendre 4, 13).to eql 1
+    end
+    it 'evaluates quadratic non-residues' do
+      expect(Modular.legendre 5, 13).to eql -1
+    end
+    it 'evaluates 0' do
+      expect(Modular.legendre 0, 13).to eql 0
     end
     it 'raises ArgumentError for composite modulus' do
       expect { Modular.legendre 1, 10 }
