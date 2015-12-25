@@ -1,7 +1,5 @@
-load 'modular.rb'
-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
+require 'spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'modular')
 
 describe Modular do
   describe 'ord' do
