@@ -109,13 +109,14 @@ describe Modular do
 
   describe 'euclidean_algorithm' do
     it 'correctly filters down to a solution' do
-      expect{Modular.euclidean_algorithm 13, 21}.to output(<<OUT).to_stdout
-8 = 21 - 1 * 13
-5 = 13 - 1 * 8
-3 = 8 - 1 * 5
-2 = 5 - 1 * 3
-1 = 3 - 1 * 2
-OUT
+      expect{Modular.euclidean_algorithm 13, 21}
+        .to output(<<-OUT.strip_heredoc).to_stdout
+          8 = 21 - 1 * 13
+          5 = 13 - 1 * 8
+          3 = 8 - 1 * 5
+          2 = 5 - 1 * 3
+          1 = 3 - 1 * 2
+        OUT
     end
     it 'correctly reports no solutions' do
       expect{ Modular.euclidean_algorithm 12, 21 }

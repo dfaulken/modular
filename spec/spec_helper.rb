@@ -1,3 +1,4 @@
+require 'active_support/core_ext/string' # for strip_heredoc
 require 'codeclimate-test-reporter'
 
 SimpleCov.start do
