@@ -1,0 +1,3 @@
+# Don't worry about documentation.
+Style/Documentation:
+  Enabled: false

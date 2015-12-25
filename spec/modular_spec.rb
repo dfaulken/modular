@@ -75,7 +75,7 @@ describe Modular do
       expect(Modular.legendre 4, 13).to eql 1
     end
     it 'evaluates quadratic non-residues' do
-      expect(Modular.legendre 5, 13).to eql -1
+      expect(Modular.legendre 5, 13).to eql(-1)
     end
     it 'evaluates 0' do
       expect(Modular.legendre 0, 13).to eql 0
@@ -92,7 +92,7 @@ describe Modular do
       # 3 + 1/(9/2) = 3 + 2/9 = 29/9
       # 2 + 1/(29/9) = 2 + 9/29 = 67/29
       expect(Modular.evaluate_continued_fraction [2, 3, 4, 2])
-       .to eql Rational(67, 29)
+        .to eql Rational(67, 29)
     end
   end
 
@@ -109,7 +109,7 @@ describe Modular do
 
   describe 'euclidean_algorithm' do
     it 'correctly filters down to a solution' do
-      expect{Modular.euclidean_algorithm 13, 21}
+      expect { Modular.euclidean_algorithm 13, 21 }
         .to output(<<-OUT.strip_heredoc).to_stdout
           8 = 21 - 1 * 13
           5 = 13 - 1 * 8
@@ -119,7 +119,7 @@ describe Modular do
         OUT
     end
     it 'correctly reports no solutions' do
-      expect{ Modular.euclidean_algorithm 12, 21 }
+      expect { Modular.euclidean_algorithm 12, 21 }
         .to output(/^No solutions$/).to_stdout
     end
   end
